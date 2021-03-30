@@ -1,18 +1,18 @@
 'use strict';
 
 let keyArray = [];
-let newArray=[];
+let newArray = [];
 
 $.ajax('data/page-1.json').then((data) => {
     data.forEach(value => {
       let item = new Horns(value);
       item.render();
-      item.dropList();
+      item.fillList();
       
     });
 
     $( '#photo-template' ).first().remove();
-    newArray.forEach(element =>{
+      newArray.forEach(element =>{
         $('select').append(`<option value="${element}">${element}</option>`);
       })
     
@@ -26,10 +26,12 @@ $.ajax('data/page-1.json').then((data) => {
     this.description = hItem.description;
     this.keyword = hItem.keyword;
     this.horns = hItem.horns;
-      }
+    keyArray.push(this.keyword);
+
+    }
 
 
-  Horns.prototype.render=function(){
+  Horns.prototype.render = function(){
     
   let clone = $('#photo-template').first().clone();
   clone.addClass( this.keyword );
@@ -42,15 +44,13 @@ $.ajax('data/page-1.json').then((data) => {
 
   }
 
-  Horns.prototype.dropList = function(){
-    keyArray.push(this.keyword);
+  Horns.prototype.fillList = function(){
+    
     newArray = [...new Set(keyArray)];
     console.log(newArray);
     
   };
 
-
-  $(document).ready(function(){
 
     $('select').click('change',function(){
       let selectItem = this.value;
@@ -60,4 +60,4 @@ $.ajax('data/page-1.json').then((data) => {
         $('section').show();
     }
     });
-  });
+ 
