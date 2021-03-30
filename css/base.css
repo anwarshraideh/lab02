@@ -1,4 +1,27 @@
-* {
-    box-sizing: border-box;
+body{
+  background-color: rgb(167, 127, 204)
   }
   
+  main{
+      overflow: hidden;
+      display: flex;
+      width: 99%;
+      height: 100%;
+      text-align: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border-radius: 7px;
+      margin: 15px;
+     
+  }
+  
+
+
+  footer{
+    clear: both;
+    height: 100px;
+    line-height:100px;
+    text-align: center;
+    font-size: 15px;
+    font-family: cursive;
+}
